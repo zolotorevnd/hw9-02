@@ -18,18 +18,18 @@
 
 ### Решение 1
 
-sudo apt update
-sudo apt install postgersql
-sudo wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu24.04_all.deb
-sudo dpkg -i zabbix-release_latest_6.0+ubuntu24.04_all.deb
-sudo apt update 
-sudo apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts
-sudo -u postgres createuser --pwprompt zabbix
-sudo -u postgres createdb -O zabbix zabbix 
+1. sudo apt update
+2. sudo apt install postgersql
+3. sudo wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu24.04_all.deb
+4. sudo dpkg -i zabbix-release_latest_6.0+ubuntu24.04_all.deb
+5. sudo apt update 
+6. sudo apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts
+7. sudo -u postgres createuser --pwprompt zabbix
+8. sudo -u postgres createdb -O zabbix zabbix 
 zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
-sudo nano /etc/zabbix/zabbix_server.conf 
-systemctl restart zabbix-server apache2
-systemctl enable zabbix-server apache2 
+9. sudo nano /etc/zabbix/zabbix_server.conf 
+10. systemctl restart zabbix-server apache2
+11. systemctl enable zabbix-server apache2 
 
 <img src = "img/zabbix_web.png" width = 100%>
 
@@ -57,12 +57,12 @@ systemctl enable zabbix-server apache2
 
 ### Решение 2
 
-sudo wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu24.04_all.deb
-sudo dpkg -i zabbix-release_latest_6.0+ubuntu24.04_all.deb
-sudo apt update
-sudo apt install zabbix-agent
-systemctl restart zabbix-agent
-systemctl enable zabbix-agent 
+1. sudo wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu24.04_all.deb
+2. sudo dpkg -i zabbix-release_latest_6.0+ubuntu24.04_all.deb
+3. sudo apt update
+4. sudo apt install zabbix-agent
+5. systemctl restart zabbix-agent
+6. systemctl enable zabbix-agent 
 
 <img src = "img/add_agents.png" width = 100%>
 
